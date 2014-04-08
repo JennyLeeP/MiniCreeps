@@ -1,4 +1,4 @@
-package cyborgJenn.miniCreeps.utils;
+package com.cyborgJenn.miniCreeps.utils;
 
 import java.io.File;
 

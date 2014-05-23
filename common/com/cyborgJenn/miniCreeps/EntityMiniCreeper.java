@@ -22,11 +22,7 @@ public class EntityMiniCreeper extends EntityCreeper{
 		this.setSize(0.5f, 1.0f);
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public boolean getCanSpawnHere()
-	{
-		return true;
-	}
+	
 	/**
      * Returns true if the newer Entity AI code should be run
      */
@@ -38,7 +34,7 @@ public class EntityMiniCreeper extends EntityCreeper{
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
 
 	}
 

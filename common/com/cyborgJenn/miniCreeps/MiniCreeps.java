@@ -1,11 +1,16 @@
 package com.cyborgJenn.miniCreeps;
 
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import com.cyborgJenn.miniCreeps.proxy.CommonProxy;
 import com.cyborgJenn.miniCreeps.utils.Config;
 import com.cyborgJenn.miniCreeps.utils.Reference;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -32,14 +37,6 @@ public class MiniCreeps {
 		
 		// Loads the Configuration File
 		Config.init(event);
-		
-		proxy.registerRenderers();
-		
-		int entityID;
-		entityID = EntityRegistry.findGlobalUniqueEntityId();
-        EntityRegistry.registerGlobalEntityID(EntityMiniCreeper.class, "MiniCreeper", entityID, 0x5A5C5B, 0x1F6138);
-        EntityRegistry.registerModEntity(EntityMiniCreeper.class, "MiniCreeper", entityID, Reference.MODID, 64, 20, true);
-        EntityRegistry.addSpawn(EntityMiniCreeper.class, 15, 15, 15, EnumCreatureType.monster);
         
 		System.out.println("[MiniCreeps] " + "Pre Init Complete..........");
 
@@ -47,14 +44,19 @@ public class MiniCreeps {
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
+		int entityID;
+		entityID = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityMiniCreeper.class, "MiniCreeper", entityID, 0x5A5C5B, 0x1F6138);
+        EntityRegistry.registerModEntity(EntityMiniCreeper.class, "MiniCreeper", entityID, MiniCreeps.instance, 64, 20, true);
+        EntityRegistry.addSpawn(EntityMiniCreeper.class, 1, 1, 2, EnumCreatureType.monster);
+        
+		proxy.registerRenderers();
 		System.out.println("[MiniCreeps] " + "Init Complete.............");
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		
 		System.out.println("[MiniCreeps] " + "Post Init Complete.............");
 	}
-	
 }
